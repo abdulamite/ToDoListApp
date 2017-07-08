@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <title></title>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="columns">
+      <div class="column">
+        <h1 class="title">To Do List App</h1>
+      </div>
+    </div>
+    <!-- input bar -->
+    <div class="columns">
+      <div class="column">
+        <div class="field">
+          <label class="label">Add item</label>
+          <p class="control">
+            <input class="input" type="text" placeholder="Add todo list item" id="newItem" v-on:keyup.enter="addItem">
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <a class="button is-danger" v-on:click="removeAll" id="removeAll">Remove All</a>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+          <div class="notification is-danger" id="errorMsg">
+            <button class="delete" v-on:click="hideError"></button>
+            Please enter a valid list item
+          </div>
+      </div>
+    </div>
+
+    <!-- list of items -->
+    <div class="columns" v-for="thing in listItems">
+        <div class="column is-one-quarter">
+          <input type="checkbox" v-model="thing.isDone">
+        </label>
+        </div>
+        <div class="column is-one-half">
+          <p :class="{done : thing.isDone}">{{thing.whatToDo}}</p>
+        </div>
+        <div class="column is-one-quarter">
+          <a class="button is-danger" id="remove" v-on:click="removeItem(thing)">Delete</a>
+        </div>
+    </div>
+
+  </div>
+  <script src="main.js" charset="utf-8"></script>
+  <style media="screen">
+    .container {
+      width: 25%;
+    }
+
+    #remove {
+      width: 100%;
+    }
+
+    #checker {
+      margin-left: 50%;
+    }
+    .done{
+      text-decoration: line-through;
+    }
+    .title{
+      text-align: center;
+      font-size: 40px;
+    }
+    #removeAll{
+      width: 100%;
+    }
+
+
+  </style>
+</body>
+
+</html>
