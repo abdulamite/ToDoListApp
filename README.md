@@ -1,2 +1,2 @@
 # ToDoListApp
-A small single page to do list application build with bulma and vuejs
+A small single page to do list application built with bulma and vuejs
